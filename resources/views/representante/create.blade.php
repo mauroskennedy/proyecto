@@ -15,26 +15,6 @@
 
 	@csrf
 
-      <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Selecciona Un Cargo</label>
-                <select  id="id_cargo" name="id_cargo" type="text" class="form-control" tabindex="1">
-                <option  value="">-Elige-</option>
-                @foreach($cargos as $cargo)
-                <option  value="{{$cargo->id}}">{{$cargo->Nombre}}</option>
-                @endforeach 
-                </select>
-       </div>
-
-	<div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Selecciona Una Organizacion</label>
-            <select  id="id_organizacionsocial" name="id_organizacionsocial" type="text" class="form-control" tabindex="1">
-            <option  value="">-Elige-</option>
-            @foreach($organizacionsocials as $organizacionsocial)
-            <option  value="{{$organizacionsocial->id}}">{{$organizacionsocial->Nombre}}</option>
-            @endforeach 
-            </select>
-        </div>
-
 
 	<div class="mb-3">
 		<label for="" class="form-label">Nombre:</label>

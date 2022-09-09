@@ -16,17 +16,7 @@
 	@csrf
 	@method('PUT')
 
-     <div class="mb-3">
-		<label for="" class="form-label">Cargo:</label>
-			<label for=""  class="form-label">{{$representante->cargos->Nombre}}</label>
-		<input style="display: none" type="text"  name="id_cargo" value="{{$representante->cargos->id}}" size="50">
-	</div>
-
-	<div class="mb-3">
-		<label for="" class="form-label">Organizacion Social:</label>
-			<label for=""  class="form-label">{{$representante->organizacionsocials->Nombre}}</label>
-		<input type="text" style="display: none" name="id_organizacionsocial" value="{{$representante->organizacionsocials->id}}"  size="50">
-	</div>
+     
 
 	<div class="mb-3">
 		<label for="" class="form-label">Nombre:</label>

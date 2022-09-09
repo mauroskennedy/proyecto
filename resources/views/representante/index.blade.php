@@ -20,13 +20,9 @@
             
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">ORGANIZACIONES SOCIALES</th>
-                <th scope="col">SIGLA</th>
                 <th scope="col">NOMBRE</th>     
-                <th scope="col">CARGO</th>
                 <th scope="col">CELULAR</th>
                 <th scope="col">CARNET</th>
-                <th scope="col">DIRECCION</th>
                 <th>ACCIONES</th>
                 
             </tr>
@@ -38,16 +34,12 @@
             @foreach($representantes as $representante)
             <tr>
                 <td>{{$representante->id}}</td>
-                <td>{{$representante->organizacionsocials->Nombre}}</td>
-                <td>{{$representante->organizacionsocials->Sigla}}</td>
                 <td>{{$representante->Nombre}}</td>
-                <td>{{$representante->cargos->Nombre}}</td>
                 <td>{{$representante->Celular}}</td>
                 <td>{{$representante->Carnet}}</td>
-                <td>{{$representante->organizacionsocials->Direccion}}</td>
                 <td>
                     <form action="{{ route('representante.destroy', $representante->id)}}" method="POST">
-                    <a href="/representante/{{$representante->id }}/edit" class="btn btn-secondary mb-3">EDITAR</a>
+                    <a href="/representante/{{$representante->id }}/edit" class="btn btn-secondary ">EDITAR</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">BORRAR</button>
@@ -76,7 +68,7 @@
     <script>
             $(document).ready(function () {
             $('#representantes').DataTable({
-                "lengthMenu": [[5, 10, 50, -1],[5, 10, 50, "ALL"]],
+                "lengthMenu": [[300, -1],["ALL"]],
                 language: {
                     "decimal": "",
                     "emptyTable": "No hay información",

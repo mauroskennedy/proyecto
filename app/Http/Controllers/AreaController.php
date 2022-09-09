@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Organizacionsocial;
+use App\Models\Area;
+use App\Models\Cargo;
+use App\Models\Representante;
 
-class OrganizacionsocialController extends Controller
+
+class AreaController extends Controller
 {
-      public function __constructor(){
+    public function __constructor(){
 
         $this->middleware('auth');
     }
@@ -18,8 +21,8 @@ class OrganizacionsocialController extends Controller
      */
     public function index()
     {   
-        $organizacionsocial = Organizacionsocial::all();
-        return view('organizacionsocial.index')->with('organizacionsocials',  $organizacionsocial);
+        $area = Area::all();
+        return view('area.index')->with('areas',  $area);
     }
 
     /**
@@ -28,8 +31,10 @@ class OrganizacionsocialController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('organizacionsocial.create');
+    {   
+        $cargos = Cargo::all();
+        $representantes = Representante::all();
+        return view('area.create')->with(['cargos'=>$cargos, 'representantes'=>$representantes]);
     }
 
     /**
@@ -40,15 +45,18 @@ class OrganizacionsocialController extends Controller
      */
     public function store(Request $request)
     {
-        $organizacionsocials = new Organizacionsocial();
-        $organizacionsocials->Nombre=$request->get('Nombre');
-        $organizacionsocials->Sigla=$request->get('Sigla');
-        $organizacionsocials->Direccion=$request->get('Direccion');
+        $areas = new Area();
+        $areas->Nombre=$request->get('Nombre');
+        $areas->Sigla=$request->get('Sigla');
+        $areas->Piso=$request->get('Piso');
+        $areas->Ubicacion=$request->get('Ubicacion');
+        $areas->id_representante=$request->get('id_representante');
+        $areas->id_cargo=$request->get('id_cargo');
 
         
 
-        $organizacionsocials->save();
-        return redirect('/organizacionsocial');
+        $areas->save();
+        return redirect('/area');
     }
 
     /**
@@ -70,8 +78,8 @@ class OrganizacionsocialController extends Controller
      */
     public function edit($id)
     {
-        $organizacionsocial = Organizacionsocial::find($id);
-        return view('organizacionsocial.edit')->with('organizacionsocial', $organizacionsocial);
+        $area = Area::find($id);
+        return view('area.edit')->with('area', $area);
     }
 
     /**
@@ -83,15 +91,16 @@ class OrganizacionsocialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $organizacionsocial = Organizacionsocial::find($id);
-        $organizacionsocial->Nombre=$request->get('Nombre');
-        $organizacionsocial->Sigla=$request->get('Sigla');
-        $organizacionsocial->Direccion=$request->get('Direccion');
+        $area = Area::find($id);
+        $area->Nombre=$request->get('Nombre');
+        $area->Sigla=$request->get('Sigla');
+        $area->Piso=$request->get('Piso');
+        $area->Ubicacion=$request->get('Ubicacion');
+        $area->id_representante=$request->get('id_representante');
+        $area->id_cargo=$request->get('id_cargo');
 
-        
-
-        $organizacionsocial->save();
-        return redirect('/organizacionsocial');
+        $area->save();
+        return redirect('/area');
     }
 
     /**
@@ -102,8 +111,10 @@ class OrganizacionsocialController extends Controller
      */
     public function destroy($id)
     {
-        $organizacionsocial = Organizacionsocial::find($id);
-        $organizacionsocial->delete();
-        return redirect('/organizacionsocial');
+        $area = Area::find($id);
+        $area->delete();
+        return redirect('/area');
     }
 }
+
+

@@ -18,18 +18,10 @@ class CreateRepresentantesTable extends Migration
             $table->string('Nombre');
             $table->bigInteger('Carnet')->nullable();
             $table->string('Celular')->nullable();
-            $table->unsignedBigInteger('id_cargo');
-            $table->unsignedBigInteger('id_organizacionsocial');
             $table->timestamps();
             
 
-            $table->foreign('id_cargo')
-                  ->references('id')
-                  ->on('cargos');       
-
-            $table->foreign('id_organizacionsocial') 
-                  ->references('id')
-                  ->on('organizacionsocials');
+            
 
               });
         

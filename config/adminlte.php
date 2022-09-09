@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>SERVICIO</b>',
+    'logo' => '<b>AREAS</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -294,15 +294,15 @@ return [
     
 
         [
-            'text'        => 'Organizacion social',
-            'url'         => '/organizacionsocial',
+            'text'        => 'Representante',
+            'url'         => '/representante',
            
             'icon' => 'fas fa-fw fa-user',
         ],
 
           [
-            'text'        => 'Representante',
-            'url'         => '/representante',
+            'text'        => 'Area',
+            'url'         => '/area',
             
             'icon' => 'fas fa-fw fa-user',
         ],

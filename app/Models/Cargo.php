@@ -10,8 +10,8 @@ class Cargo extends Model
     use HasFactory;
 
 
-    public function representantes(){
-        return $this->hasMany(Representante::class,'id');
+    public function areas(){
+        return $this->hasMany(Area::class,'id');
 }
 
 }

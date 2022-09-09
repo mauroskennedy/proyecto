@@ -4,42 +4,51 @@
 
 @section('content_header')
 
-<h1>NOMINA DE ORGANIZACIONES SOCIALES</h1>
+<h1>NOMINA DE AREAS</h1>
 
 @stop
 
 @section('content')
 
-<a href="{{ route('organizacionsocial.create') }}" class="btn btn-secondary mb-3">INSERTAR ORGANIZACION SOCIAL</a>
+<a href="{{ route('area.create') }}" class="btn btn-secondary mb-3">INSERTE UN AREA</a>
 
     <div class="table-responsive">
 
-    <table id="organizacionsocials" class="table table-dark table-bordered shadow-lg mt-4">
+    <table id="areas" class="table table-dark table-bordered shadow-lg mt-4">
         
         <thead class="bg-primary text-white">
             
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">NOMBRE</th> 
-                <th scope="col">SIGLA</th>  
-                <th scope="col">DIRECCION</th>
-                <th>ACCIONES</th>       
-                
+                <th scope="col">NOMBRE Y APELLIDO</th>
+                <th scope="col">CARGO</th>
+                <th scope="col">UNIDAD ORGANIZACIONAL</th>
+                <th scope="col">CELULAR</th>
+                <th scope="col">SIGLA</th>
+                <th scope="col">CARNET</th>
+                <th scope="col">PISO</th>
+                <th scope="col">UBICACION</th>
+                <th>ACCIONES</th>
             </tr>
 
         </thead>
 
         <tbody>
             
-            @foreach($organizacionsocials as $organizacionsocial)
+            @foreach($areas as $area)
             <tr>
-                <td>{{$organizacionsocial->id}}</td>
-                <td>{{$organizacionsocial->Nombre}}</td>
-                <td>{{$organizacionsocial->Sigla}}</td>
-                <td>{{$organizacionsocial->Direccion}}</td>
+                <td>{{$area->id}}</td>
+                <td>{{$area->representantes->Nombre}}</td>
+                <td>{{$area->cargos->Nombre}}</td>
+                <td>{{$area->Nombre}}</td>
+                <td>{{$area->representantes->Celular}}</td>
+                <td>{{$area->Sigla}}</td>
+                <td>{{$area->representantes->Carnet}}</td>
+                <td>{{$area->Piso}}</td>
+                <td>{{$area->Ubicacion}}</td>
                 <td>
-                    <form action="{{ route('organizacionsocial.destroy', $organizacionsocial->id)}}" method="POST">
-                    <a href="/organizacionsocial/{{  $organizacionsocial->id}}/edit" class="btn btn-secondary mb-3">EDITAR</a>
+                    <form action="{{ route('area.destroy', $area->id)}}" method="POST">
+                    <a href="/area/{{  $area->id}}/edit" class="btn btn-secondary mb-4">EDITAR</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">BORRAR</button>
@@ -66,7 +75,7 @@
 
     <script>
             $(document).ready(function () {
-            $('#organizacionsocials').DataTable({
+            $('#areas').DataTable({
                 "lengthMenu": [[5, 10, 50, -1],[5, 10, 50, "ALL"]],
                 language: {
                     "decimal": "",

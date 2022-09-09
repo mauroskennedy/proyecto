@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::resource('cargo','App\Http\Controllers\CargoController');
 
-Route::resource('organizacionsocial','App\Http\Controllers\OrganizacionsocialController');
+Route::resource('area','App\Http\Controllers\AreaController');
 
 Route::resource('representante','App\Http\Controllers\RepresentanteController');
 

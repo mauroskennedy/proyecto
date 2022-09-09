@@ -9,30 +9,49 @@
 @stop
 
 @section('content')
- <h2>REGISTRAR UNA ORGANIZACION</h2>
+	
+	<h2>EDITAR UN AREA</h2>
 
-<form action="{{ route('organizacionsocial.store') }}" method="POST">
+<form action="/area/{{$area->id }}" method="POST">
 
 	@csrf
+	@method('PUT')
+
+<div class="mb-3">
+        <label for="" class="form-label">Cargo:</label>
+            <label for=""  class="form-label">{{$area->cargos->Nombre}}</label>
+        <input style="display: none" type="text"  name="id_cargo" value="{{$area->cargos->id}}" size="50">
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Representante:</label>
+            <label for=""  class="form-label">{{$area->representantes->Nombre}}</label>
+        <input type="text" style="display: none" name="id_representante" value="{{$area->representantes->id}}"  size="50">
+    </div>
 
 	<div class="mb-3">
 		<label for="" class="form-label">Nombre:</label>
-		<input id="Nombre" name="Nombre" type="text" class="form-control" >
+		<input id="Nombre" name="Nombre" type="text" class="form-control" value="{{$area->Nombre}}">
 	</div>
 	
 	<div class="mb-3">
 		<label for="" class="form-label">Sigla:</label>
-		<input id="Sigla" name="Sigla" type="text" class="form-control" tabindex="1">
+		<input id="Sigla" name="Sigla" type="text" class="form-control" value="{{$area->Sigla}}">
 	</div>
 
 	<div class="mb-3">
-		<label for="" class="form-label">Direccion:</label>
-		<input id="Direccion" name="Direccion" type="text" class="form-control" tabindex="2">
+		<label for="" class="form-label">Ubicacion:</label>
+		<input id="Ubicacion" name="Ubicacion" type="text" class="form-control" value="{{$area->Ubicacion}}">
 	</div>
-
-	<a href="{{ route('organizacionsocial.index') }}" class="btn btn-secondary" tabindex="3">Cancelar</a>
-	<button type="submit" class="btn btn-primary" tabindex="3">Guardar</button>
+	
+    <div class="mb-3">
+        <label for="" class="form-label">Piso:</label>
+        <input id="Piso" name="Piso" type="text" class="form-control" value="{{$area->Piso}}">
+    </div>
+	<a href="{{ route('area.index') }}" class="btn btn-secondary">Cancelar</a>
+	<button type="submit" class="btn btn-primary">Guardar</button>
 </form>
+
 @stop
 
 @section('css')
@@ -50,7 +69,7 @@
 
     <script>
             $(document).ready(function () {
-            $('#organizacionsocials').DataTable({
+            $('#areas').DataTable({
                 "lengthMenu": [[5, 10, 50, -1],[5, 10, 50, "ALL"]],
                 language: {
                     "decimal": "",
@@ -75,8 +94,5 @@
             });
         });
         </script>
-
+        
 @stop
-
-	
-
